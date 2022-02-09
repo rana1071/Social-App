@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://sarthak:rana@dev.8jp4v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId" : "ffef00c20ca8f5089e8d",
+    "githubSecret" : "bb88082bd6d18176f1ad6ef2eeaeac538cfda862"
+}
