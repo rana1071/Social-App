@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment,useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/layouts/Navbar';
 import Landing from './components/layouts/Landing';
@@ -9,8 +9,16 @@ import './App.css';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
+import { loadUser , loadToken} from './actions/auth';
 
-const App = () => (
+
+const App = () => { 
+  useEffect(() => {
+    store.dispatch(loadToken());
+    store.dispatch(loadUser());
+  },[]);
+
+  return(
   <Provider store={store}>
     <Router>
      <Fragment>
@@ -26,5 +34,5 @@ const App = () => (
      </Fragment>
     </Router>
     </Provider>
-);
+)};
 export default App;
