@@ -33,7 +33,7 @@ if(isAuthenticated)
       <p className="lead"><i className="fas fa-user"></i> Sign into to your account</p>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
-          <input type="email" placeholder="Email Address" name="email" value ={email} onChange = {e => onChange(e)} required/>
+          <input type="email" placeholder="Email Address" name="email" value ={email} onChange = {e => onChange(e)} />
           
         </div>
         <div className="form-group">
