@@ -8,7 +8,8 @@ import {
   TOKEN_LOADED,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
-  LOGOUT
+  LOGOUT,
+  CLEAR_PROFILE
 } from './types';
 import makeAuthTokenHeader from '../utils/makeAuthTokenHeader';
  
@@ -105,5 +106,6 @@ export const login = ({ email, password }) => async dispatch => {
 //logout /clear profile
 
 export const logout = () => dispatch => {
+  dispatch({ type: CLEAR_PROFILE});
   dispatch({ type: LOGOUT});
 };
