@@ -5,8 +5,10 @@ import {
     ACCOUNT_DELETED,
     CLEAR_PROFILE,
     GET_PROFILE,
+    GET_PROFILES,
     PROFILE_ERROR,
-    UPDATE_PROFILE
+    UPDATE_PROFILE,
+    GET_REPOS
 } from './types';
 
 //get current users profile
@@ -16,6 +18,61 @@ export const getCurrentProfile = () => async dispatch =>{
 
         dispatch({
             type: GET_PROFILE,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        });
+    }
+};
+
+//Get all profiles
+
+export const getProfiles = () => async dispatch =>{
+    dispatch({ type: CLEAR_PROFILE});
+    try {
+        const res = await axios.get('/api/profile');
+
+        dispatch({
+            type: GET_PROFILES,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        });
+    }
+};
+
+//Get all profile by id
+
+export const getProfileById = userID => async dispatch =>{
+    try {
+        const res = await axios.get(`/api/profile/user/${userID}`);
+
+        dispatch({
+            type: GET_PROFILE,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        });
+    }
+};
+
+//Get Github repos
+
+export const getGithubRepos = username => async dispatch =>{
+    try {
+        const res = await axios.get(`/api/profile/github/${username}`);
+
+        dispatch({
+            type: GET_REPOS,
             payload: res.data
         });
     } catch (err) {
@@ -173,7 +230,7 @@ export const deleteAccount = id => async dispatch => {
 
     
     try {
-        const res = await axios.delete('/api/profile');
+        await axios.delete('/api/profile');
 
         dispatch({type: CLEAR_PROFILE});
         dispatch({type: ACCOUNT_DELETED});
@@ -186,4 +243,4 @@ export const deleteAccount = id => async dispatch => {
         });
     }
 }
-}
+};

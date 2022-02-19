@@ -19,6 +19,7 @@
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.0",
+    "react-bootstrap": "^2.1.2",
     "redux": "^4.0.1",
     "request": "^2.79.0"
   },
